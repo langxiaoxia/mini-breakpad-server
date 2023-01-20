@@ -4,12 +4,15 @@ mkdirp = require 'mkdirp'
 {EventEmitter} = require 'events'
 Record = require './record'
 
+pool_path = process.env.MINI_BREAKPAD_SERVER_POOL_PATH ? '.'
+
 class Database extends EventEmitter
   db: null
 
   # Public: Create or open a Database with path to {filename}
-  constructor: (filename=path.join('pool', 'database', 'dirty', 'db')) ->
+  constructor: (filename=path.join(pool_path, 'pool', 'database', 'dirty', 'db')) ->
     dist = path.resolve filename, '..'
+    console.log 'database path:', dist
     mkdirp dist, (err) =>
       throw new Error("Cannot create directory: #{dist}") if err?
 

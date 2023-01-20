@@ -6,4 +6,4 @@ block content
     each record in records
       li
         a(href='view/' + record.id)
-          = 'v' + record.version + ' ' + record.time.toLocaleString()
+          = 'v' + record.version + '-' + record.platform + '-' + record.osarch + ' ' + record.ptype + ' ' + record.time.toLocaleString() + ' ' + record.sender.ip
